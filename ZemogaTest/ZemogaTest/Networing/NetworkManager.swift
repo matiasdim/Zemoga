@@ -34,12 +34,21 @@ struct NetworkManager {
         Self.baseGetRequest(path: "posts", callback: callback)
     }
     
+    static func getUsers(callback: @escaping (Data?) -> ()) {
+        Self.baseGetRequest(path: "users", callback: callback)
+    }
+    
+    static func getPostComments(postId: Int, callback: @escaping (Data?) -> ()) {
+        Self.baseGetRequest(path: "posts/\(postId)/comments", callback: callback)
+    }
+    
     static func isInternetReachable() -> Bool {
         return NetworkReachabilityManager()!.isReachable
     }
 }
 
 struct CommonDecoder {
+    // Generic function to decode
     static func decodeObject<T: Decodable>(objectType: T.Type, data: Data) -> T? {
         do {
             return try JSONDecoder().decode(objectType, from: data)

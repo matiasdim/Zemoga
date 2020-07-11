@@ -38,7 +38,7 @@ class MainViewController: UIViewController {
         self.tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: self.reuseIdentifier)
         
         self.emptyView.alpha = self.posts.isEmpty ? 1 : 0.0
-        self.pullData()
+        self.pullPosts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,10 +60,10 @@ class MainViewController: UIViewController {
     }
     
     @objc private func refresh() {
-        self.pullData()
+        self.pullPosts()
     }
     
-    private func pullData() {
+    private func pullPosts() {
         if NetworkManager.isInternetReachable() {
             KRProgressHUD.show(withMessage: "Getting posts...")
             Post.getProducts { [weak self] (posts) in
@@ -84,7 +84,10 @@ class MainViewController: UIViewController {
                 weakSelf.toggleEmptyView(hide: !posts.isEmpty)
                 weakSelf.tableView.reloadData()
             }
-
+        } else {
+            let alert = UIAlertController(title: "Alert!", message: "No internet connection", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+            self.present(alert, animated: true)
         }
     }
     

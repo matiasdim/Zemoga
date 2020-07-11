@@ -85,8 +85,8 @@
                                 <constraints>
                                     <constraint firstItem="qg2-Td-WDe" firstAttribute="centerX" secondItem="yzU-Fz-2fu" secondAttribute="centerX" id="0s2-YV-jY8"/>
                                     <constraint firstItem="gMB-xc-cTv" firstAttribute="top" secondItem="qg2-Td-WDe" secondAttribute="bottom" constant="8" id="M72-00-U6D"/>
-                                    <constraint firstItem="gMB-xc-cTv" firstAttribute="leading" secondItem="yzU-Fz-2fu" secondAttribute="leading" constant="30" id="VTu-bt-Zaz"/>
-                                    <constraint firstAttribute="trailing" secondItem="gMB-xc-cTv" secondAttribute="trailing" constant="30" id="a1c-ai-bxb"/>
+                                    <constraint firstItem="gMB-xc-cTv" firstAttribute="leading" relation="lessThanOrEqual" secondItem="yzU-Fz-2fu" secondAttribute="leading" constant="30" id="VTu-bt-Zaz"/>
+                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="gMB-xc-cTv" secondAttribute="trailing" constant="30" id="a1c-ai-bxb"/>
                                     <constraint firstItem="qg2-Td-WDe" firstAttribute="centerY" secondItem="yzU-Fz-2fu" secondAttribute="centerY" constant="-30" id="pqm-le-7tK"/>
                                 </constraints>
                             </view>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KRProgressHUD
 
 protocol PostManagmentDelegate: AnyObject {
     func favoriteButtonPressed(for post: Post)
@@ -15,20 +16,27 @@ protocol PostManagmentDelegate: AnyObject {
 class DetailViewController: UIViewController {
     var refreshButton: UIBarButtonItem!
     var post: Post
+    var user: User? {
+        didSet {
+            self.userNameLabel.text = self.user?.name
+            self.userEmailLabel.text = self.user?.email
+            self.userPhoneLabel.text = self.user?.phone
+            self.userWebsiteLabel.text = self.user?.website
+        }
+    }
+    var commentsArray: [Comment] = []
     weak var delegate: PostManagmentDelegate?
-//    var imageName: String = "" {
-//        didSet {
-//            //Once favorite image name is set to star (default name),it automatically checks if product is faorited to change image for a filled star and viceversa
-//            if let favorite = self.post.favorite, favorite {
-//                self.imageName += ".fill"
-//            }
-//        }
-//    }
+    
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userEmailLabel: UILabel!
+    @IBOutlet weak var userPhoneLabel: UILabel!
+    @IBOutlet weak var userWebsiteLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
     init(post: Post, delegate: PostManagmentDelegate) {
         self.post = post
         self.delegate = delegate
-//        self.imageName = "star"
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -49,6 +57,44 @@ class DetailViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = refreshButton
         self.navigationController?.navigationBar.tintColor = UIColor.white
         
+        self.descriptionLabel.text = self.post.body
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+        // Load user info
+        self.pullUsers()
+        
+    }
+    
+    private func pullUsers() {
+        if NetworkManager.isInternetReachable() {
+            KRProgressHUD.show(withMessage: "Getting users...")
+            User.getUsers { [weak self] (users) in
+                KRProgressHUD.dismiss()
+                if let index = users.firstIndex(where: { $0.id == self?.post.userId }) {
+                    self?.user = users[index]
+                }
+                self?.pullPostComments()
+            }
+        } else {
+            let alert = UIAlertController(title: "Alert!", message: "No internet connection", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+            self.present(alert, animated: true)
+        }
+    }
+    
+    private func pullPostComments() {
+        if NetworkManager.isInternetReachable() {
+            KRProgressHUD.show(withMessage: "Getting post comments..")
+            Comment.getComments(for: self.post) { [weak self] (comments) in
+                self?.commentsArray = comments
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            }
+        } else {
+            let alert = UIAlertController(title: "Alert!", message: "No internet connection", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+            self.present(alert, animated: true)
+        }
     }
     
     @objc private func toggleFavorite() {
@@ -66,4 +112,27 @@ class DetailViewController: UIViewController {
         return imageName
     }
 
+}
+
+extension DetailViewController: UITableViewDelegate {
+
+}
+
+extension DetailViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.commentsArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier"){
+            cell.backgroundColor = .systemGray6
+            cell.textLabel?.textColor = .gray
+            cell.textLabel?.numberOfLines = 0
+            cell.selectionStyle = .none
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 12.0)
+            cell.textLabel?.text = self.commentsArray[indexPath.row].body
+            return cell
+        }
+        return UITableViewCell()
+    }
 }

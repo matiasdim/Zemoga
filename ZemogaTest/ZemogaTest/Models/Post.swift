@@ -9,15 +9,13 @@
 import Foundation
 
 struct Post: Codable {
-    var id:Int
+    var id: Int
     var userId: Int
     var title: String
     var body: String
     var favorite: Bool?
     var unread: Bool?
-    
-    let decoder = JSONDecoder()
-    
+        
     init(id: Int, userId: Int, title: String, body: String) {
         self.id = id
         self.userId = userId
@@ -38,12 +36,11 @@ struct Post: Codable {
     
     static func getProducts(callback: @escaping ([Post]) -> ()) {
         NetworkManager.getPosts { (response) in
-            if let posts = CommonDecoder.decodeObject(objectType: [Post].self, data: response!) {
+            if let response = response, let posts = CommonDecoder.decodeObject(objectType: [Post].self, data: response) {
                 callback(posts)
             } else {
                 callback([])
-            }
-            
+            }            
         }
     }
 }
