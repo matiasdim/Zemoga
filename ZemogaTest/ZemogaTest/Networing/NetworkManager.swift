@@ -10,9 +10,10 @@ import Foundation
 import Alamofire
 
 struct NetworkManager {    
-    static let baseURL = ""
+    static let baseURL = "https://jsonplaceholder.typicode.com/"
     
     static func baseGetRequest(path: String, callback: @escaping (Any?) -> ()) {
+        path = "posts"
         if let url = URL(string: "\(Self.baseURL)\(path)") {
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = HTTPMethod.get.rawValue

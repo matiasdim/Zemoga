@@ -52,6 +52,7 @@ class MainViewController: UIViewController {
     
     @objc private func refresh() {
         self.pullData { [weak self]  (_) in
+            self?.toggleEmptyView(hide: true)
             self?.tableView.reloadData()
         }
     }
