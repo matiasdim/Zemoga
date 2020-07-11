@@ -12,16 +12,17 @@ import Alamofire
 struct NetworkManager {    
     static let baseURL = "https://jsonplaceholder.typicode.com/"
     
-    static func baseGetRequest(path: String, callback: @escaping (Any?) -> ()) {
-        path = "posts"
+    static func baseGetRequest(path: String, callback: @escaping (Data?) -> ()) {
         if let url = URL(string: "\(Self.baseURL)\(path)") {
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = HTTPMethod.get.rawValue
             urlRequest = try! JSONEncoding.default.encode(urlRequest, with: nil)
             
             AF.request(urlRequest).responseJSON { (response) in
-                if let value = response.value {
-                    callback(value)
+                if let data = response.data {
+                    callback(data)  
+                } else {
+                    callback(nil)
                 }
             }
         } else {
@@ -29,7 +30,22 @@ struct NetworkManager {
         }
     }
     
+    static func getPosts(callback: @escaping (Data?) -> ()) {
+        Self.baseGetRequest(path: "posts", callback: callback)
+    }
+    
     static func isInternetReachable() -> Bool {
         return NetworkReachabilityManager()!.isReachable
+    }
+}
+
+struct CommonDecoder {
+    static func decodeObject<T: Decodable>(objectType: T.Type, data: Data) -> T? {
+        do {
+            return try JSONDecoder().decode(objectType, from: data)
+        } catch {
+            print("Could not decode")
+            return nil
+        }
     }
 }
