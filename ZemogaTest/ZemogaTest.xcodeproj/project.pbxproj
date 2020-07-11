@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,7 @@
 		60202C5C24B954B6004F779A /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60202C5A24B954B6004F779A /* CustomTableViewCell.xib */; };
 		60202C5F24B9705D004F779A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60202C5D24B9705D004F779A /* DetailViewController.swift */; };
 		60202C6024B9705D004F779A /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60202C5E24B9705D004F779A /* DetailViewController.xib */; };
+		60202C6524B97A38004F779A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60202C6424B97A38004F779A /* NetworkManager.swift */; };
 		75659D2DD1FFF38B888DE240 /* Pods_ZemogaTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E86AD3DB4F17FD24AA3EE5C /* Pods_ZemogaTest.framework */; };
 		89491E5E8D9B3DA9CBA85F60 /* Pods_ZemogaTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45760DB51E9B9FA3317FDBB /* Pods_ZemogaTestTests.framework */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 		60202C5A24B954B6004F779A /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		60202C5D24B9705D004F779A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		60202C5E24B9705D004F779A /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		60202C6424B97A38004F779A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		8E86AD3DB4F17FD24AA3EE5C /* Pods_ZemogaTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZemogaTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A877061810C87882B426A013 /* Pods-ZemogaTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZemogaTestTests.release.xcconfig"; path = "Target Support Files/Pods-ZemogaTestTests/Pods-ZemogaTestTests.release.xcconfig"; sourceTree = "<group>"; };
 		D9A620BC8BD2F6A19FA98919 /* Pods-ZemogaTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZemogaTest.release.xcconfig"; path = "Target Support Files/Pods-ZemogaTest/Pods-ZemogaTest.release.xcconfig"; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 		60202C6324B9795B004F779A /* Networing */ = {
 			isa = PBXGroup;
 			children = (
+				60202C6424B97A38004F779A /* NetworkManager.swift */,
 			);
 			path = Networing;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				60202C3924B94365004F779A /* ViewController.swift in Sources */,
 				60202C5B24B954B6004F779A /* CustomTableViewCell.swift in Sources */,
 				60202C3524B94365004F779A /* AppDelegate.swift in Sources */,
+				60202C6524B97A38004F779A /* NetworkManager.swift in Sources */,
 				60202C5F24B9705D004F779A /* DetailViewController.swift in Sources */,
 				60202C3F24B94365004F779A /* ZemogaTest.xcdatamodeld in Sources */,
 				60202C3724B94365004F779A /* SceneDelegate.swift in Sources */,

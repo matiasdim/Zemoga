@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KRProgressHUD
 
 class MainViewController: UIViewController {
 
@@ -15,7 +16,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var emptyView: UIView!
     
     let reuseIdentifier = "ReuseIdentifier"
-    var data: [String] = ["Hola como vas label largo largo largo muy extenso para ver como se ve el lorem impsum", "Mundo"]
+    var data: [String] = ["asasdsd asd mljkwe jljnsdf jdjnq cjkwc ac qjn q ckjq", "Asdasd"]//[]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +34,11 @@ class MainViewController: UIViewController {
     
         self.tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: self.reuseIdentifier)
         
-        
+        self.pullData { [weak self](_) in
+            self?.tableView.reloadData()
+        }
         self.emptyView.alpha = self.data.isEmpty ? 1 : 0.0
-        self.tableView.reloadData()
+        
     }
     
     @IBAction func segmentedControlChanged(_ sender: Any) {
@@ -48,7 +51,17 @@ class MainViewController: UIViewController {
     }
     
     @objc private func refresh() {
-        
+        self.pullData { [weak self]  (_) in
+            self?.tableView.reloadData()
+        }
+    }
+    
+    private func pullData(callback: @escaping (Any?) -> ()) { // Change anny for theneeded object model
+        if NetworkManager.isInternetReachable() {
+//            KRProgressHUD.show(withMessage: "Getting posts...")
+            callback(nil)
+            //Gmake callto get data
+        }
     }
     
     private func toggleEmptyView(hide: Bool) {
@@ -74,6 +87,9 @@ extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: self.reuseIdentifier) as? CustomTableViewCell {
+            if indexPath.row < 1 { // Change to 20
+                cell.unreadImageView.isHidden = false
+            } 
             cell.titleLabel.text = self.data[indexPath.row]
             
             return cell
