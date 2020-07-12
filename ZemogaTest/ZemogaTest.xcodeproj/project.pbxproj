@@ -23,6 +23,10 @@
 		60202C6824BA1595004F779A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60202C6724BA1595004F779A /* Post.swift */; };
 		60202C6A24BA15A7004F779A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60202C6924BA15A7004F779A /* User.swift */; };
 		60202C6C24BA15B5004F779A /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60202C6B24BA15B5004F779A /* Comment.swift */; };
+		60202C7124BA8F67004F779A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60202C6424B97A38004F779A /* NetworkManager.swift */; };
+		60202C7224BA90E7004F779A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60202C6724BA1595004F779A /* Post.swift */; };
+		60202C7324BA92D7004F779A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60202C6924BA15A7004F779A /* User.swift */; };
+		60202C7424BA92D9004F779A /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60202C6B24BA15B5004F779A /* Comment.swift */; };
 		75659D2DD1FFF38B888DE240 /* Pods_ZemogaTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E86AD3DB4F17FD24AA3EE5C /* Pods_ZemogaTest.framework */; };
 		89491E5E8D9B3DA9CBA85F60 /* Pods_ZemogaTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45760DB51E9B9FA3317FDBB /* Pods_ZemogaTestTests.framework */; };
 /* End PBXBuildFile section */
@@ -361,7 +365,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60202C7124BA8F67004F779A /* NetworkManager.swift in Sources */,
+				60202C7424BA92D9004F779A /* Comment.swift in Sources */,
 				60202C4F24B94367004F779A /* ZemogaTestTests.swift in Sources */,
+				60202C7324BA92D7004F779A /* User.swift in Sources */,
+				60202C7224BA90E7004F779A /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

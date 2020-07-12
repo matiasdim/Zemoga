@@ -33,12 +33,12 @@ struct Comment: Codable {
         case body = "body"
     }
     
-    static func getComments(for post: Post, callback: @escaping ([Comment]) -> ()) {
+    static func getComments(for post: Post, callback: @escaping ([Comment]?) -> ()) {
         NetworkManager.getPostComments(postId: post.id) { (response) in
             if let response = response, let comments = CommonDecoder.decodeObject(objectType: [Comment].self, data: response) {
                 callback(comments)
             } else {
-                callback([])
+                callback(nil)
             }
         }
     }

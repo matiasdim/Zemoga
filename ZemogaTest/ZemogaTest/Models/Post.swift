@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Post: Codable {
+class Post: Codable {
     var id: Int
     var userId: Int
     var title: String
@@ -34,12 +34,12 @@ struct Post: Codable {
         case body = "body"
     }
     
-    static func getProducts(callback: @escaping ([Post]) -> ()) {
+    static func getPosts(callback: @escaping ([Post]?) -> ()) {
         NetworkManager.getPosts { (response) in
             if let response = response, let posts = CommonDecoder.decodeObject(objectType: [Post].self, data: response) {
                 callback(posts)
             } else {
-                callback([])
+                callback(nil)
             }            
         }
     }

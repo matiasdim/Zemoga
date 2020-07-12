@@ -69,7 +69,7 @@ class DetailViewController: UIViewController {
             KRProgressHUD.show(withMessage: "Getting users...")
             User.getUsers { [weak self] (users) in
                 KRProgressHUD.dismiss()
-                if let index = users.firstIndex(where: { $0.id == self?.post.userId }) {
+                if let users = users, let index = users.firstIndex(where: { $0.id == self?.post.userId }) {
                     self?.user = users[index]
                 }
                 self?.pullPostComments()
@@ -85,7 +85,9 @@ class DetailViewController: UIViewController {
         if NetworkManager.isInternetReachable() {
             KRProgressHUD.show(withMessage: "Getting post comments..")
             Comment.getComments(for: self.post) { [weak self] (comments) in
-                self?.commentsArray = comments
+                if let comments = comments {
+                    self?.commentsArray = comments
+                }
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
@@ -111,10 +113,6 @@ class DetailViewController: UIViewController {
         }
         return imageName
     }
-
-}
-
-extension DetailViewController: UITableViewDelegate {
 
 }
 

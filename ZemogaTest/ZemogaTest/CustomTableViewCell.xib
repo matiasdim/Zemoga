@@ -55,7 +55,7 @@
                     <constraint firstItem="2Cy-HT-1om" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="G2V-nL-QqR"/>
                     <constraint firstAttribute="trailing" secondItem="Irn-P1-q00" secondAttribute="trailing" constant="10" id="HOJ-tD-ie1"/>
                     <constraint firstItem="Irn-P1-q00" firstAttribute="leading" secondItem="2Cy-HT-1om" secondAttribute="trailing" constant="10" id="JsE-64-Ye1"/>
-                    <constraint firstAttribute="bottom" secondItem="Irn-P1-q00" secondAttribute="bottom" constant="10" id="jx9-H8-0Sz"/>
+                    <constraint firstAttribute="bottom" secondItem="Irn-P1-q00" secondAttribute="bottom" priority="750" constant="10" id="jx9-H8-0Sz"/>
                     <constraint firstItem="Xme-jY-Xcp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ks5-Ug-zBh"/>
                     <constraint firstItem="Irn-P1-q00" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="lHa-7f-Xu8"/>
                     <constraint firstItem="Xme-jY-Xcp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="nDh-gw-yL2"/>

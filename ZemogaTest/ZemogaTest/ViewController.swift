@@ -66,9 +66,9 @@ class MainViewController: UIViewController {
     private func pullPosts() {
         if NetworkManager.isInternetReachable() {
             KRProgressHUD.show(withMessage: "Getting posts...")
-            Post.getProducts { [weak self] (posts) in
+            Post.getPosts { [weak self] (posts) in
                 KRProgressHUD.dismiss()
-                guard let weakSelf = self else {
+                guard let weakSelf = self, let posts = posts else {
                     return
                 }
                 weakSelf.segmentedControl.selectedSegmentIndex = 0
@@ -151,7 +151,7 @@ extension MainViewController: UITableViewDataSource {
         if editingStyle == .delete {
             self.posts.remove(at: indexPath.row)
             self.toggleEmptyView(hide: !self.posts.isEmpty)
-            tableView.reloadData()
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
