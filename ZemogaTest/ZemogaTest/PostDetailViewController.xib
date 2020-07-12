@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="ZemogaTest" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostDetailViewController" customModule="ZemogaTest" customModuleProvider="target">
             <connections>
                 <outlet property="descriptionLabel" destination="BKe-0R-FB6" id="0jx-iF-jNB"/>
                 <outlet property="tableView" destination="5oL-bf-lq2" id="bFg-ce-k6v"/>

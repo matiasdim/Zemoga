@@ -1,5 +1,5 @@
 //
-//  DetailViewController.swift
+//  PostDetailViewController.swift
 //  ZemogaTest
 //
 //  Created by Matías Gil Echavarría on 7/10/20.
@@ -13,7 +13,7 @@ protocol PostManagmentDelegate: AnyObject {
     func favoriteButtonPressed(for post: Post)
 }
 
-class DetailViewController: UIViewController {
+class PostDetailViewController: UIViewController {
     var refreshButton: UIBarButtonItem!
     var post: Post
     var user: User? {
@@ -116,7 +116,7 @@ class DetailViewController: UIViewController {
 
 }
 
-extension DetailViewController: UITableViewDataSource {
+extension PostDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.commentsArray.count
     }

@@ -15,10 +15,10 @@
 		60202C4124B94367004F779A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60202C4024B94367004F779A /* Assets.xcassets */; };
 		60202C4424B94367004F779A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60202C4224B94367004F779A /* LaunchScreen.storyboard */; };
 		60202C4F24B94367004F779A /* ZemogaTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60202C4E24B94367004F779A /* ZemogaTestTests.swift */; };
-		60202C5B24B954B6004F779A /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60202C5924B954B6004F779A /* CustomTableViewCell.swift */; };
-		60202C5C24B954B6004F779A /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60202C5A24B954B6004F779A /* CustomTableViewCell.xib */; };
-		60202C5F24B9705D004F779A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60202C5D24B9705D004F779A /* DetailViewController.swift */; };
-		60202C6024B9705D004F779A /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60202C5E24B9705D004F779A /* DetailViewController.xib */; };
+		60202C5B24B954B6004F779A /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60202C5924B954B6004F779A /* PostTableViewCell.swift */; };
+		60202C5C24B954B6004F779A /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60202C5A24B954B6004F779A /* PostTableViewCell.xib */; };
+		60202C5F24B9705D004F779A /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60202C5D24B9705D004F779A /* PostDetailViewController.swift */; };
+		60202C6024B9705D004F779A /* PostDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60202C5E24B9705D004F779A /* PostDetailViewController.xib */; };
 		60202C6524B97A38004F779A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60202C6424B97A38004F779A /* NetworkManager.swift */; };
 		60202C6824BA1595004F779A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60202C6724BA1595004F779A /* Post.swift */; };
 		60202C6A24BA15A7004F779A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60202C6924BA15A7004F779A /* User.swift */; };
@@ -54,10 +54,10 @@
 		60202C4A24B94367004F779A /* ZemogaTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZemogaTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		60202C4E24B94367004F779A /* ZemogaTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZemogaTestTests.swift; sourceTree = "<group>"; };
 		60202C5024B94367004F779A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		60202C5924B954B6004F779A /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		60202C5A24B954B6004F779A /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
-		60202C5D24B9705D004F779A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		60202C5E24B9705D004F779A /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		60202C5924B954B6004F779A /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		60202C5A24B954B6004F779A /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
+		60202C5D24B9705D004F779A /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		60202C5E24B9705D004F779A /* PostDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostDetailViewController.xib; sourceTree = "<group>"; };
 		60202C6424B97A38004F779A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		60202C6724BA1595004F779A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		60202C6924BA15A7004F779A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -130,10 +130,10 @@
 				60202C3624B94365004F779A /* SceneDelegate.swift */,
 				60202C3824B94365004F779A /* ViewController.swift */,
 				60202C3A24B94365004F779A /* Main.storyboard */,
-				60202C5D24B9705D004F779A /* DetailViewController.swift */,
-				60202C5E24B9705D004F779A /* DetailViewController.xib */,
-				60202C5924B954B6004F779A /* CustomTableViewCell.swift */,
-				60202C5A24B954B6004F779A /* CustomTableViewCell.xib */,
+				60202C5D24B9705D004F779A /* PostDetailViewController.swift */,
+				60202C5E24B9705D004F779A /* PostDetailViewController.xib */,
+				60202C5924B954B6004F779A /* PostTableViewCell.swift */,
+				60202C5A24B954B6004F779A /* PostTableViewCell.xib */,
 				60202C4024B94367004F779A /* Assets.xcassets */,
 				60202C4224B94367004F779A /* LaunchScreen.storyboard */,
 				60202C4524B94367004F779A /* Info.plist */,
@@ -264,8 +264,8 @@
 			files = (
 				60202C4424B94367004F779A /* LaunchScreen.storyboard in Resources */,
 				60202C4124B94367004F779A /* Assets.xcassets in Resources */,
-				60202C6024B9705D004F779A /* DetailViewController.xib in Resources */,
-				60202C5C24B954B6004F779A /* CustomTableViewCell.xib in Resources */,
+				60202C6024B9705D004F779A /* PostDetailViewController.xib in Resources */,
+				60202C5C24B954B6004F779A /* PostTableViewCell.xib in Resources */,
 				60202C3C24B94365004F779A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,13 +349,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				60202C3924B94365004F779A /* ViewController.swift in Sources */,
-				60202C5B24B954B6004F779A /* CustomTableViewCell.swift in Sources */,
+				60202C5B24B954B6004F779A /* PostTableViewCell.swift in Sources */,
 				60202C3524B94365004F779A /* AppDelegate.swift in Sources */,
 				60202C6824BA1595004F779A /* Post.swift in Sources */,
 				60202C6524B97A38004F779A /* NetworkManager.swift in Sources */,
 				60202C6C24BA15B5004F779A /* Comment.swift in Sources */,
 				60202C6A24BA15A7004F779A /* User.swift in Sources */,
-				60202C5F24B9705D004F779A /* DetailViewController.swift in Sources */,
+				60202C5F24B9705D004F779A /* PostDetailViewController.swift in Sources */,
 				60202C3F24B94365004F779A /* ZemogaTest.xcdatamodeld in Sources */,
 				60202C3724B94365004F779A /* SceneDelegate.swift in Sources */,
 			);

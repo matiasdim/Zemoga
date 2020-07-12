@@ -1,5 +1,5 @@
 //
-//  CustomTableViewCell.swift
+//  PostTableViewCell.swift
 //  ZemogaTest
 //
 //  Created by Matías Gil Echavarría on 7/10/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomTableViewCell: UITableViewCell {
+class PostTableViewCell: UITableViewCell {
 
     @IBOutlet weak var unreadImageView: UIImageView!
     @IBOutlet weak var favoriteImageView: UIImageView!

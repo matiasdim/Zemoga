@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  PostsListViewController.swift
 //  ZemogaTest
 //
 //  Created by Matías Gil Echavarría on 7/10/20.
@@ -9,7 +9,7 @@
 import UIKit
 import KRProgressHUD
 
-class MainViewController: UIViewController {
+class PostsListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -37,7 +37,7 @@ class MainViewController: UIViewController {
         self.segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
         self.segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.systemGreen], for: .selected)
     
-        self.tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: self.reuseIdentifier)
+        self.tableView.register(UINib(nibName: "PostTableViewCell", bundle: nil), forCellReuseIdentifier: self.reuseIdentifier)
         
         self.emptyView.alpha = self.posts.isEmpty ? 1 : 0.0
         self.pullPosts()
@@ -101,7 +101,7 @@ class MainViewController: UIViewController {
 
 }
 
-extension MainViewController: UITableViewDelegate {
+extension PostsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch self.segmentedControl.selectedSegmentIndex {
         case self.firstIndex:
@@ -127,15 +127,15 @@ extension MainViewController: UITableViewDelegate {
 //        self.posts[indexPath.row].unread = false
         tableView.reloadData()
         if let post = post {
-            self.navigationController?.pushViewController(DetailViewController(post: post, delegate: self), animated: true)
+            self.navigationController?.pushViewController(PostDetailViewController(post: post, delegate: self), animated: true)
         }
     }
 }
 
-extension MainViewController: UITableViewDataSource {
+extension PostsListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: self.reuseIdentifier) as? CustomTableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: self.reuseIdentifier) as? PostTableViewCell {
             let post = self.isShowingFavorites ? self.favoritePosts[indexPath.row] : self.posts[indexPath.row]
             // TO avoid missmatched of favorite and unread values because of the cell reuse, those values are attached to the object and not to the cell
             if let unread = post.unread {
@@ -170,7 +170,7 @@ extension MainViewController: UITableViewDataSource {
     
 }
 
-extension MainViewController: PostManagmentDelegate {
+extension PostsListViewController: PostManagmentDelegate {
     func favoriteButtonPressed(for post: Post) {
         if let index = self.posts.firstIndex(where: { $0.id == post.id }) {
             self.posts[index].favorite?.toggle()
