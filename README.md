@@ -14,7 +14,7 @@ A view and a view controller for the post list and for the post detail (where th
 There is a file (NetworkManager.swift) which manages all the networking. Inside this file, there is also a small struct used to decode data.This data decoder es used to parse the Web service answers to the objects I need. For this reason the functions that decodes deals with generics.
 
 -- Additional comments:
-Cells can ve deleted swiping to the left,the cell that needsto be deleted, following Apple's guidelines on this matter.
+Cells can be deleted swiping to the left,the cell that needsto be deleted, following Apple's guidelines on this matter.
 When the table getsempty, ananimated view appears indicating it and viceversa, it dissapears when table is filled again.
 
 - Third Party libraries used
