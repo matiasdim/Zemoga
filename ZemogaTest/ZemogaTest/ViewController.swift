@@ -20,6 +20,8 @@ class MainViewController: UIViewController {
     private var favoritePosts: [Post] = []
     private var isShowingFavorites = false
     
+    let firstIndex = 0
+    let secondIndex = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +56,7 @@ class MainViewController: UIViewController {
     @IBAction func deleteAllPressed(_ sender: Any) {
         self.posts.removeAll()
         self.favoritePosts.removeAll()
-        self.segmentedControl.selectedSegmentIndex = 0
+        self.segmentedControl.selectedSegmentIndex = self.firstIndex
         self.isShowingFavorites = false
         self.toggleEmptyView(hide: false)
     }
@@ -71,7 +73,7 @@ class MainViewController: UIViewController {
                 guard let weakSelf = self, let posts = posts else {
                     return
                 }
-                weakSelf.segmentedControl.selectedSegmentIndex = 0
+                weakSelf.segmentedControl.selectedSegmentIndex = weakSelf.firstIndex
                 weakSelf.isShowingFavorites = false
                 weakSelf.posts = posts
                 weakSelf.favoritePosts = []
@@ -102,9 +104,9 @@ class MainViewController: UIViewController {
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch self.segmentedControl.selectedSegmentIndex {
-        case 0:
+        case self.firstIndex:
             return self.posts.count
-        case 1:
+        case self.secondIndex:
             return self.favoritePosts.count
         default:
             return 0
@@ -113,9 +115,20 @@ extension MainViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.posts[indexPath.row].unread = false
+        var post: Post?
+        switch self.segmentedControl.selectedSegmentIndex {
+        case self.firstIndex:
+            post = self.posts[indexPath.row]
+            self.posts[indexPath.row].unread = false
+        case self.secondIndex:
+            post = self.favoritePosts[indexPath.row]
+        default: break
+        }
+//        self.posts[indexPath.row].unread = false
         tableView.reloadData()
-        self.navigationController?.pushViewController(DetailViewController(post: self.posts[indexPath.row], delegate: self), animated: true)
+        if let post = post {
+            self.navigationController?.pushViewController(DetailViewController(post: post, delegate: self), animated: true)
+        }
     }
 }
 

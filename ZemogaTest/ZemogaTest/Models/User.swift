@@ -33,14 +33,13 @@ struct User: Codable {
         case website = "website"
     }
     
-    static func getUsers(callback: @escaping ([User]?) -> ()) {
-        NetworkManager.getUsers { (response) in
-            if let response = response, let posts = CommonDecoder.decodeObject(objectType: [User].self, data: response) {
+    static func getUser(userId: Int, callback: @escaping (User?) -> ()) {
+        NetworkManager.getUser(userId: userId) { (response) in
+            if let response = response, let posts = CommonDecoder.decodeObject(objectType: User.self, data: response) {
                 callback(posts)
             } else {
                 callback(nil)
             }
-            
         }
     }
 }

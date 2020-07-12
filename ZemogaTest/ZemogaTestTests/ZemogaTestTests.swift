@@ -16,7 +16,7 @@ class ZemogaTestTests: XCTestCase {
     
     /* ********* API Calls ********* */
         
-    // Sucessfull Posts pull includes an array of posts or emptyarray but not nil
+    // Successful Posts pull includes an array of posts or emptyarray but not nil
     func testPostsGet() {
         let e = expectation(description: "GetPosts")
         Post.getPosts { (posts) in
@@ -26,18 +26,19 @@ class ZemogaTestTests: XCTestCase {
         wait(for: [e], timeout: 10.0)
     }
     
-    // Sucessfull Users pull includes an array of posts or emptyarray but not nil
-    func testUsersGet() {
-        let e = expectation(description: "GetUsers")
-        User.getUsers { (users) in
-            XCTAssertNotNil(users)
+    // Successful Users pull includes an array of posts or emptyarray but not nil
+    
+    func testUserGet() {
+        let e = expectation(description: "GetUser")
+        User.getUser(userId: 1) { (user) in
+            XCTAssertNotNil(user)
             e.fulfill()
         }
         wait(for: [e], timeout: 10.0)
     }
         
     
-    // Sucessfull Post comments pull includes an array of posts or emptyarray but not nil
+    // Successful Post comments pull includes an array of posts or emptyarray but not nil
     func testPostCommentsGet() {
         let e = expectation(description: "GetPostComments")
         Comment.getComments(for: post, callback: { (comments) in

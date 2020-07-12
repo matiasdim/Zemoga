@@ -34,8 +34,8 @@ struct NetworkManager {
         Self.baseGetRequest(path: "posts", callback: callback)
     }
     
-    static func getUsers(callback: @escaping (Data?) -> ()) {
-        Self.baseGetRequest(path: "users", callback: callback)
+    static func getUser(userId: Int, callback: @escaping (Data?) -> ()) {
+        Self.baseGetRequest(path: "users/\(userId)", callback: callback)
     }
     
     static func getPostComments(postId: Int, callback: @escaping (Data?) -> ()) {

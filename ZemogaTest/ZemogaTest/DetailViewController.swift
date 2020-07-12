@@ -67,10 +67,10 @@ class DetailViewController: UIViewController {
     private func pullUsers() {
         if NetworkManager.isInternetReachable() {
             KRProgressHUD.show(withMessage: "Getting users...")
-            User.getUsers { [weak self] (users) in
+            User.getUser(userId: self.post.userId) { [weak self] (user) in
                 KRProgressHUD.dismiss()
-                if let users = users, let index = users.firstIndex(where: { $0.id == self?.post.userId }) {
-                    self?.user = users[index]
+                if let user = user {
+                    self?.user = user
                 }
                 self?.pullPostComments()
             }
