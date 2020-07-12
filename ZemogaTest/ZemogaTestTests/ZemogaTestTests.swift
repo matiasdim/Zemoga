@@ -10,6 +10,10 @@ import XCTest
 @testable import ZemogaTest
 
 class ZemogaTestTests: XCTestCase {
+    let post = Post(id: 1, userId: 1, title: "Titletesting", body: "Body Testing")
+    let comment = Comment(id: 1, name: "Matías", email: "matias@cc.cc", postId: 1, body: "Bdody test")
+    let user = User(id: 1, name: "Matías", email: "matias@ccc.cc", phone: "222-2221-12", website: "google.com")
+    
     /* ********* API Calls ********* */
         
     // Sucessfull Posts pull includes an array of posts or emptyarray but not nil
@@ -36,7 +40,6 @@ class ZemogaTestTests: XCTestCase {
     // Sucessfull Post comments pull includes an array of posts or emptyarray but not nil
     func testPostCommentsGet() {
         let e = expectation(description: "GetPostComments")
-        let post = Post(id: 1, userId: 1, title: "Title", body: "THis is the body")
         Comment.getComments(for: post, callback: { (comments) in
             XCTAssertNotNil(comments)
             e.fulfill()
@@ -61,12 +64,9 @@ class ZemogaTestTests: XCTestCase {
         XCTAssertNil(array)
     }
     
-    
     /* ********* Codable tests ********* */
     // Basic Codable tests for models (Includes CodkingKeys)
     func testPostCoding() throws {
-        let post = Post(id: 1, userId: 1, title: "Titletesting", body: "Body Testing")
-        
         let dataEncoded = try JSONEncoder().encode(post)
         let postDecoded = try JSONDecoder().decode(Post.self, from: dataEncoded) as Post
 
@@ -74,8 +74,6 @@ class ZemogaTestTests: XCTestCase {
     }
     
     func testUserCoding() throws {
-        let user = User(id: 1, name: "Matías", email: "matias@ccc.cc", phone: "222-2221-12", website: "google.com")
-        
         let dataEncoded = try JSONEncoder().encode(user)
         let userDecoded = try JSONDecoder().decode(User.self, from: dataEncoded) as User
 
@@ -83,14 +81,89 @@ class ZemogaTestTests: XCTestCase {
     }
     
     func testCommentCoding() throws {
-        let comment = Comment(id: 1, name: "Matías", email: "matias@cc.cc", postId: 1, body: "Bdody test")
-        
         let dataEncoded = try JSONEncoder().encode(comment)
         let commentDecoded = try JSONDecoder().decode(Comment.self, from: dataEncoded) as Comment
 
         XCTAssertEqual(comment, commentDecoded)
     }
+    
+    /* ********* Model Init ********* */
+    
+    // Post model
+    let expectedPostId = 1
+    let expectedPostUserId = 1
+    let expectedPostTitle = "Titletesting"
+    let expectedPostBody = "Body Testing"
+    
+    func testPostInitIdInit() {
+        XCTAssertEqual(expectedPostId, post.id)
+    }
+    
+    func testPostInitUserIdInit() {
+        XCTAssertEqual(expectedPostUserId, post.userId)
+    }
+    
+    func testPostInitTitleInit() {
+        XCTAssertEqual(expectedPostTitle, post.title)
+    }
+    
+    func testPostInitBodyInit() {
+        XCTAssertEqual(expectedPostBody, post.body)
+    }
+    
+    // User model
+    let expectedUserId = 1
+    let expectedUserName = "Matías"
+    let expectedUserEmail = "matias@ccc.cc"
+    let expectedUserPhone = "222-2221-12"
+    let expectedUserWebsite = "google.com"
+    
+    func testUserIdInit() {
+        XCTAssertEqual(expectedUserId, user.id)
+    }
+    
+    func testUserNameInit() {
+        XCTAssertEqual(expectedUserName, user.name)
+    }
+    
+    func testUserEmailInit() {
+        XCTAssertEqual(expectedUserEmail, user.email)
+    }
+    
+    func testUserPhoneInit() {
+        XCTAssertEqual(expectedUserPhone, user.phone)
+    }
+    
+    func testUserWebsiteInit() {
+        XCTAssertEqual(expectedUserWebsite, user.website)
+    }
         
+    // Comment model
+    let expectedCommentId = 1
+    let expectedCommentName = "Matías"
+    let expectedCommentEmail = "matias@cc.cc"
+    let expectedCommentPostId = 1
+    let expectedCommentBody = "Bdody test"
+    
+    func testCommentIdInit() {
+        XCTAssertEqual(expectedCommentId, comment.id)
+    }
+    
+    func testCommentNameInit() {
+        XCTAssertEqual(expectedCommentName, comment.name)
+    }
+    
+    func testCommentEmailInit() {
+        XCTAssertEqual(expectedCommentEmail, comment.email)
+    }
+    
+    func testCommentPostIdInit() {
+        XCTAssertEqual(expectedCommentPostId, comment.postId)
+    }
+    
+    func testCommentBodyInit() {
+        XCTAssertEqual(expectedCommentBody, comment.body)
+    }
 }
 
 // Models needs to be Equatable in order to beable to be compared with XCTAssertEqual
