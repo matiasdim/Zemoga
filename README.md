@@ -5,7 +5,7 @@
 - To easily run Unit tests, open with XCode *"ZemogaTestTests.swift"* file and click the play button on the left side inside the line numbers column.
  
 - Apple's MVC pattern
-Since is a small and quick app, there is no risk to end having huge ViewControllers, so I thought Apple'sMVC patter fits good on this project.
+It was used, Since is a small and quick app, there is no risk to end having huge ViewControllers, so I thought Apple'sMVC patter fits good on this project.
 ViewControllers act as bridge between the views and the model.
 
 - Project structure:
